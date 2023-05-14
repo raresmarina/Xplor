@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Laravel React Example Full Stack Application
 Example Application build with Laravel and React
 
@@ -21,3 +22,6 @@ Make sure you have environment setup properly. You will need PHP8.1, composer an
 9. Copy `react/.env.example` into `.env` and adjust the `VITE_API_BASE_URL` parameter
 9. Run `npm install`
 10. Run `npm run dev` to start vite server for React
+=======
+# Xplor
+>>>>>>> f30248d4c5b56f9615addea8dd3c9c613030257e
