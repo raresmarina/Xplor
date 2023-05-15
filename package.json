@@ -1,14 +1,1 @@
-{
-    "private": true,
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build"
-    },
-    "devDependencies": {
-        "axios": "^1.1.2",
-        "laravel-vite-plugin": "^0.7.0",
-        "lodash": "^4.17.19",
-        "postcss": "^8.1.14",
-        "vite": "^3.0.0"
-    }
-}
+{"homepage":"http://raresmarina.github.io/Xplor","private":true,"scripts":{"predeploy":"npm run build","deploy":"gh-pages -d dist","dev":"vite","build":"vite build"},"devDependencies":{"axios":"^1.1.2","gh-pages":"^5.0.0","laravel-vite-plugin":"^0.7.0","lodash":"^4.17.19","postcss":"^8.1.14","vite":"^3.0.0"}}
