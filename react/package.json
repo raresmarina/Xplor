@@ -1,9 +1,12 @@
 {
+  "homepage": "http://raresmarina.github.io/Xplor",
   "name": "react",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predeploy":"nmp run build",
+    "deploy":"gh-pages -d build",
     "dev": "vite --port=3000",
     "build": "vite build",
     "preview": "vite preview"
