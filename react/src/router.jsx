@@ -7,8 +7,14 @@ import NotFound from "./views/NotFound";
 import Signup from "./views/Signup";
 import Users from "./views/Users";
 import UserForm from "./views/UserForm";
+import App from "./App.jsx"
 
 const router = createBrowserRouter([
+       
+  {
+    path: '/advisor',
+    element: <App/>
+  },     
   {
     path: '/',
     element: <DefaultLayout/>,
@@ -17,6 +23,7 @@ const router = createBrowserRouter([
         path: '/',
         element: <Navigate to="/users"/>
       },
+    
       {
         path: '/dashboard',
         element: <Dashboard/>
