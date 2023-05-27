@@ -7,8 +7,24 @@ import NotFound from "./views/NotFound";
 import Signup from "./views/Signup";
 import Users from "./views/Users";
 import UserForm from "./views/UserForm";
+import App from "./App.jsx"
+import Ap from "./Ap.jsx";
+import Packing from "./Packing.jsx";
 
 const router = createBrowserRouter([
+       
+  {
+    path: '/advisor',
+    element: <App/>
+  },   
+  {
+    path: '/directions',
+    element: <Ap/>
+  },  
+  {
+    path: '/packing',
+    element: <Packing/>
+  },  
   {
     path: '/',
     element: <DefaultLayout/>,
@@ -17,6 +33,7 @@ const router = createBrowserRouter([
         path: '/',
         element: <Navigate to="/users"/>
       },
+    
       {
         path: '/dashboard',
         element: <Dashboard/>

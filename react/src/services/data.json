@@ -1,0 +1,64 @@
+{
+  "essentials": {
+    "category": "essentials",
+    "items": [
+      "passport",
+      "cash",
+      "credit_card",
+      "phone_charger",
+      "insurance_health",
+      "insurance_travel",
+      "tickets",
+      "copies",
+      "covid_certificate"
+    ]
+  },
+  "clothes": {
+    "category": "clothes",
+    "items": [
+      "underwear",
+      "socks",
+      "bras",
+      "thermal_underwear",
+      "pyjamas",
+      "tshirts",
+      "shirts",
+      "pants",
+      "shorts",
+      "dresses",
+      "swimsuits"
+    ]
+  },
+  "toiletries": {
+    "category": "toiletries",
+    "items": [
+      "toothbrush",
+      "toothpaste",
+      "floss",
+      "mouthwash",
+      "deodorant",
+      "shower_gel",
+      "shampoo",
+      "sunscreen",
+      "shaving",
+      "perfume",
+      "medications"
+    ]
+  },
+  "other": {
+    "category": "other",
+    "items": [
+      "face_mask",
+      "binoculars",
+      "sunglasses",
+      "camera_charger",
+      "laptop_charger",
+      "tablet_charger",
+      "earphones",
+      "powerbank",
+      "books",
+      "games",
+      "backpack"
+    ]
+  }
+}
