@@ -18,13 +18,6 @@ const MainWrapper = styled.main`
   padding: ${({ theme }) => theme.orbit.spaceSmall};
   margin-top: 52px; // because of navbar
 
-  ${media.largeMobile(css`
-    padding: ${({ theme }) => theme.orbit.spaceMedium};
-  `)};
-
-  ${media.tablet(css`
-    margin-top: 64px; // because of navbar
-  `)};
 
   ${media.largeDesktop(css`
     padding: ${({ theme }) => theme.orbit.spaceLarge};

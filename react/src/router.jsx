@@ -1,4 +1,4 @@
-import {createBrowserRouter, Navigate} from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import Dashboard from "./Dashboard.jsx";
 import DefaultLayout from "./components/DefaultLayout";
 import GuestLayout from "./components/GuestLayout";
@@ -7,69 +7,76 @@ import NotFound from "./views/NotFound";
 import Signup from "./views/Signup";
 import Users from "./views/Users";
 import UserForm from "./views/UserForm";
-import App from "./App.jsx"
+import App from "./App.jsx";
 import Ap from "./Ap.jsx";
 import Packing from "./Packing.jsx";
+import HomePage from "./components/HomePage.jsx";
 
 const router = createBrowserRouter([
-       
   {
-    path: '/advisor',
-    element: <App/>
-  },   
-  {
-    path: '/directions',
-    element: <Ap/>
-  },  
-  {
-    path: '/packing',
-    element: <Packing/>
-  },  
-  {
-    path: '/',
-    element: <DefaultLayout/>,
-    children: [
-      {
-        path: '/',
-        element: <Navigate to="/users"/>
-      },
-    
-      {
-        path: '/dashboard',
-        element: <Dashboard/>
-      },
-      {
-        path: '/users',
-        element: <Users/>
-      },
-      {
-        path: '/users/new',
-        element: <UserForm key="userCreate" />
-      },
-      {
-        path: '/users/:id',
-        element: <UserForm key="userUpdate" />
-      }
-    ]
+    path: "/",
+    element: <Navigate to="/home" replace />,
   },
   {
-    path: '/',
-    element: <GuestLayout/>,
+    path: "/advisor",
+    element: <App />,
+  },
+  {
+    path: "/directions",
+    element: <Ap />,
+  },
+  {
+    path: "/packing",
+    element: <Packing />,
+  },
+  {
+    path: "/home",
+    element: <HomePage />,
+  },
+  {
+    path: "/",
+    element: <DefaultLayout />,
     children: [
       {
-        path: '/login',
-        element: <Login/>
+        path: "/",
+        element: <Navigate to="/users" replace />,
       },
       {
-        path: '/signup',
-        element: <Signup/>
-      }
-    ]
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "/users",
+        element: <Users />,
+      },
+      {
+        path: "/users/new",
+        element: <UserForm key="userCreate" />,
+      },
+      {
+        path: "/users/:id",
+        element: <UserForm key="userUpdate" />,
+      },
+    ],
+  },
+  {
+    path: "/",
+    element: <GuestLayout />,
+    children: [
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
+      },
+    ],
   },
   {
     path: "*",
-    element: <NotFound/>
-  }
-])
+    element: <NotFound />,
+  },
+]);
 
 export default router;
