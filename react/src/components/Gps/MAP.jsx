@@ -209,7 +209,7 @@ const Map = ({ apiKey }) => {
     });
   };
 
-//...rest of your code
+
 
 return (
   <div style={styles.container}>
@@ -235,14 +235,17 @@ return (
           onChange={(e) => handleTravelModeChange(e.target.value)}
           style={styles.input}
         >
+          <option value="">Select travel mode</option>
           <option value="DRIVING">Driving</option>
           <option value="WALKING">Walking</option>
           <option value="BICYCLING">Bicycling</option>
           <option value="TRANSIT">Transit</option>
         </select>
-        <button onClick={handleCalculateRoute} style={styles.modeButton}>
-          Calculate Route
-        </button>
+        <div style={{ marginTop: '10px' }}>
+          <button onClick={handleCalculateRoute} style={styles.modeButton}>
+            Calculate Route
+          </button>
+       </div>
       </div>
       <div style={styles.selectedDestinations}>
         <h3>Selected Destinations:</h3>

@@ -28,7 +28,7 @@ const styles = {
     width: '50%',
     padding: '8px',
     fontSize: '16px',
-    backgroundColor: '#3f51b5',
+    backgroundColor: '#FF5A5F',
     color: '#fff',
     border: 'none',
     borderRadius: '4px',
@@ -37,7 +37,7 @@ const styles = {
   modeButton: {
     padding: '8px',
     fontSize: '16px',
-    backgroundColor: '#3f51b5',
+    backgroundColor: '#FF5A5F',
     color: '#fff',
     border: 'none',
     borderRadius: '4px',
