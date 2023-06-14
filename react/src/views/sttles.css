@@ -1,0 +1,5 @@
+.scrollable-container {
+    max-height: 500px; /* setează înălțimea maximă în funcție de nevoile tale */
+    overflow-y: auto; /* permite scroll pe axa Y atunci când conținutul depășește înălțimea maximă */
+  }
+  
