@@ -10,7 +10,7 @@ const containerStyle = {
 const travelModeColors = {
   'DRIVING': 'red',
   'WALKING': 'blue',
-  'BICYCLING': 'green',
+  'BICYCLING': 'yellow',
   'TRANSIT': 'purple'
 };
 
@@ -29,6 +29,11 @@ const Map = ({ apiKey }) => {
   const routeOptimization = true;
   const [isRouteCalculated, setIsRouteCalculated] = useState(false);
   const [shouldCalculateRoute, setShouldCalculateRoute] = useState(false);
+  const [activeTravelMode, setActiveTravelMode] = useState('');
+  const [showNoRouteMessage, setShowNoRouteMessage] = useState(false);
+  const [distance, setDistance] = useState(null);
+  const [mapKey, setMapKey] = useState(0);
+
 
   const handleDestinationChange = (event) => {
     setDestination(event.target.value);
@@ -88,24 +93,30 @@ const Map = ({ apiKey }) => {
     }
   }, [autocompleteStart, autocompleteDestination]);
 
-  const calculateRoute = (start, waypoints) => {
+  const calculateRoute = () => {
     const directionsService = new window.google.maps.DirectionsService();
-    const waypointsCoordinates = waypoints.map((location) => ({
+    const waypointsCoordinates = locations.map((location) => ({
       location: new window.google.maps.LatLng(location.lat, location.lng),
       stopover: true,
     }));
-    const destinationCoordinate = new window.google.maps.LatLng(
-      locations[locations.length - 1]?.lat,
-      locations[locations.length - 1]?.lng
-    );
-    const destinationAddress = selectedDestinations[selectedDestinations.length - 1];
-    if (start && destinationCoordinate) {
+  
+    if (locations.length >= 2) {
+      const startCoordinate = new window.google.maps.LatLng(
+        locations[0]?.lat,
+        locations[0]?.lng
+      );
+  
+      const destinationCoordinate = new window.google.maps.LatLng(
+        locations[locations.length - 1]?.lat,
+        locations[locations.length - 1]?.lng
+      );
+  
       directionsService.route(
         {
-          origin: start,
+          origin: startCoordinate,
           destination: destinationCoordinate,
-          waypoints: waypointsCoordinates,
-          optimizeWaypoints: routeOptimization,
+          waypoints: waypointsCoordinates, 
+          optimizeWaypoints: true,
           travelMode: travelMode,
         },
         (result, status) => {
@@ -113,42 +124,34 @@ const Map = ({ apiKey }) => {
             setDirections(result);
             const route = result.routes[0];
             const totalDuration = route.legs.reduce((acc, leg) => acc + leg.duration.value, 0);
+            const totalDistance = route.legs.reduce((acc, leg) => acc + leg.distance.value, 0);
             const hours = Math.floor(totalDuration / 3600);
             const minutes = Math.floor((totalDuration % 3600) / 60);
-            const seconds = totalDuration % 60;
-            setDuration({ hours, minutes, seconds });
-
-            if (routeOptimization) {
-              const order = result.routes[0].waypoint_order;
-              setSelectedDestinations((prevDestinations) => {
-                const start = prevDestinations[0];
-                const destinations = prevDestinations.slice(1);
-                const sortedDestinations = order.map((index) => destinations[index]);
-                return [start, ...sortedDestinations, destinationAddress];
-              });
-            }
+            const km = totalDistance / 1000;
+            setDuration({ hours, minutes });
+            setDistance(km);
           } else {
             setDirections(null);
             setDuration(null);
+            setTimeout(() => setShowNoRouteMessage(true), 1000);
           }
         }
       );
     }
   };
+  
+  
+  useEffect(() => {
+    if (directions) {
+      setShowNoRouteMessage(false);
+    }
+  }, [directions]);
 
   useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setCurrentLocation({ lat: latitude, lng: longitude });
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
-    }
-  }, []);
+    const { latitude, longitude } = { latitude: 50, longitude: 15 };
+    setCurrentLocation({ lat: latitude, lng: longitude });
+}, []);
+
 
   useEffect(() => {
     if (locations.length >= 2 && shouldCalculateRoute) {
@@ -163,7 +166,7 @@ const Map = ({ apiKey }) => {
       setDirections(null);
       setDuration(null);
     }
-  }, [locations, travelMode, routeOptimization, shouldCalculateRoute]); // Added shouldCalculateRoute to dependency array
+  }, [locations, travelMode, routeOptimization, shouldCalculateRoute]); 
 
 
   const handleTravelModeChange = (mode) => {
@@ -173,7 +176,11 @@ const Map = ({ apiKey }) => {
   const handleCalculateRoute = () => {
     setShouldCalculateRoute(true);
     setIsRouteCalculated(true);
+    setActiveTravelMode(travelMode);  // Update the active travel mode
+    setMapKey(prevMapKey => prevMapKey + 1); // Increment the map key
   };
+  
+
   const handleDeleteDestinations = () => {
     setLocations([]);
     setDirections(null);
@@ -187,27 +194,18 @@ const Map = ({ apiKey }) => {
     setLocations((prevLocations) => {
       const updatedLocations = [...prevLocations];
       updatedLocations.splice(index, 1);
-      setDirections(null);
-      setDuration(null);
-
-      if (updatedLocations.length >= 2) {
-        const startCoordinate = new window.google.maps.LatLng(
-          updatedLocations[0]?.lat,
-          updatedLocations[0]?.lng
-        );
-        const waypoints = updatedLocations.slice(1, -1);
-        calculateRoute(startCoordinate, waypoints);
-      }
-
       return updatedLocations;
     });
-
+  
     setSelectedDestinations((prevSelectedDestinations) => {
       const updatedSelectedDestinations = [...prevSelectedDestinations];
       updatedSelectedDestinations.splice(index, 1);
       return updatedSelectedDestinations;
     });
+  
+    setShouldCalculateRoute(true); // Trigger recalculation
   };
+  
 
 
 
@@ -264,12 +262,16 @@ return (
         </button>
       </div>
       
-      {duration && (
+      {duration && distance && (
         <p style={styles.duration}>
-          Duration: {duration.hours} hours {duration.minutes} minutes {duration.seconds} seconds
+           Distance: {distance.toFixed()} km <br />
+           Time: {duration.hours} hours {duration.minutes} minutes 
         </p>
-      )}
-      {!directions && isRouteCalculated && (
+        
+        
+)}
+
+      {!directions && showNoRouteMessage  && (
         <p style={styles.noRouteMessage}>
           No route available for the selected travel mode. Please try a different mode.
         </p>
@@ -278,10 +280,10 @@ return (
     <div style={{...styles.mapContainer, ...containerStyle}}> {/* Apply containerStyle here */}
       {currentLocation && (
         <GoogleMap
-          key={travelMode}
+          key={mapKey}
           mapContainerStyle={containerStyle}
           center={currentLocation}
-          zoom={10}
+          zoom={4}
         >
           {locations.map((location, index) => (
             <Marker key={index} position={location} />
@@ -300,3 +302,4 @@ return (
 };
 
 export default Map;
+///varianta buna

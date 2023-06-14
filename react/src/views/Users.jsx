@@ -46,11 +46,7 @@ export default function Users() {
 
   return (
     <div>
-      {/*<div style={{ display: 'flex', justifyContent: "space-between", alignItems: "center" }}>
-        <h1>Users</h1>
-        <Link className="btn-add" to="/users/new">Add new</Link>
-      </div>*/}
-      <div className="card animated fadeInDown">
+      <div className="card animated fadeInDown" style={{maxHeight: "500px", overflowY: "auto"}}>
         <table>
           <thead>
             <tr>
@@ -79,9 +75,6 @@ export default function Users() {
                   <td>{u.email}</td>
                   <td>{u.created_at}</td>
                   <td>
-                    {/*<Link className="btn-edit" to={"/users/" + u.id}>
-                      Edit
-                    </Link>*/}
                     &nbsp;
                     <button
                       className="btn-edit"
@@ -89,7 +82,6 @@ export default function Users() {
                     >
                       Contact
                     </button>
-                    {/*<button className="btn-delete" onClick={ev => onDeleteClick(u)}>Delete</button>*/}
                   </td>
                 </tr>
               ))}

@@ -51,6 +51,7 @@ const styles = {
     marginBottom: '10px',
     color: 'red',
     fontStyle: 'italic',
+    fontSize: '17px',
   },
   mapContainer: {
     flex: '70%',
