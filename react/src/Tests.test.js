@@ -1,4 +1,4 @@
-/*import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import Login from '../components/Login'; 
 import { render, fireEvent } from '@testing-library/react';
 import Signup from '../components/Signup'; 
@@ -269,4 +269,4 @@ describe('TravelCard component', () => {
       fireEvent.click(doneButton);
       expect(screen.queryByPlaceholderText('item')).not.toBeInTheDocument();
     });
-  });*/
+  });
