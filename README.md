@@ -1,18 +1,21 @@
-<h1>Xplore<h1>
+#  Xplore
 
-**Introduction**
+<img src="386873173_191669477283573_964616205301197568_n.png">
 
+### Introduction
 Welcome to the Xplore application! Xplore is a comprehensive travel companion that combines both organizational and social aspects of travel to enhance your travel experiences. This readme file will provide you with an overview of the key features and functionalities of the Xplore application.
 
-**Key Features**
 
-1. Social Interaction
+
+### Key Features
+
+##### Social Interaction Social Interaction
 
 - Connect with fellow travelers and share your experiences.
 
 - Discover travel companions with similar interests and plans.
 
-2. Efficient Route Planning
+#####  Efficient Route Planning
 
 - Plan your travel routes with ease.
 
@@ -20,7 +23,7 @@ Welcome to the Xplore application! Xplore is a comprehensive travel companion th
 
 - Get real-time traffic updates and alternative routes.
 
-3. Personalized Travel Experiences
+##### Personalized Travel Experiences
 
 - Customize your travel experience based on your preferences.
 
@@ -28,7 +31,7 @@ Welcome to the Xplore application! Xplore is a comprehensive travel companion th
 
 - Receive personalized recommendations.
 
-4. Packing Assistance
+##### Packing Assistance
 
 - Create packing lists for your trips.
 
@@ -36,28 +39,27 @@ Welcome to the Xplore application! Xplore is a comprehensive travel companion th
 
 - Stay organized and prepared for your travels.
 
-**Usage**
+### Usage
 
-Once you have open Xplore, you have to create an account or login.
+Once you have open Xplore, you have to **create an account** or **login.**
 
-![](RackMultipart20230913-1-ehf66c_html_83be238b5f1a99b5.jpg) ![](RackMultipart20230913-1-ehf66c_html_8c6a83c705f7ad06.jpg)
+<img src = "386431556_1114029039983475_3164890504120081490_n.png">
 
 Now you can start using the application to enhance your travel experiences.
 
-![](RackMultipart20230913-1-ehf66c_html_4460af8ae5b52441.jpg)
 
 **- Make Friends(Connecting with Travelers)**: Use the social features to connect with other travelers, share your experiences, and get travel recommendations.
 
-![](RackMultipart20230913-1-ehf66c_html_7a82df001c2c8d8d.jpg)
+<img src = "386861643_1018643196043156_1991333979203910576_n.png">
 
 **- Organize a trip (Route Planning)**: When planning a trip, use the route planning functionality to find the most efficient routes to your destinations.
 
-![](RackMultipart20230913-1-ehf66c_html_e1863fc15866bb73.jpg)
+<img src = "384543872_875423924000641_4650917355703375990_n.png">
 
 **- TravelAdvisor (Personalized Recommendations)**: Customize your travel experience by providing your preferences, and let Xplore recommend accommodation, dining, and attraction options that suit your tastes.
 
-![](RackMultipart20230913-1-ehf66c_html_5e0a0cbbb068cede.jpg)
+<img src = "386437141_1034356707983324_3700562122067869184_n.png">
 
 **- Packing:** Use the packing assistance module to create packing lists and stay organized when preparing for your trips.
 
-![](RackMultipart20230913-1-ehf66c_html_57fc5dd0b91a59ef.jpg)
+<img src = "386881338_1087885782580725_8391601928170981289_n.png">
